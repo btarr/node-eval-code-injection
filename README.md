@@ -4,7 +4,7 @@
 This exploits a Node script which is vulnerable to code injection ([CWE-94](https://cwe.mitre.org/data/definitions/94.html)) done for my Engineering Secure Software class as a demo.  I did a quick writeup for the vulnerability [here](code-injection-writeup.pdf)
 
 ## Instructions
-I have included a script which will take a sting of a color in lowercase and output a hex value that matches that color, for example:
+I have included a getHexValue.js, a script which will take a sting of a color in lowercase and output a hex value that matches that color, for example:
 ```
 Enter a color in lowercase to get its hex value (e.x. blue):  
 purple
@@ -54,7 +54,7 @@ Enter a color in lowercase to get its hex value (e.x. blue):
 false
 ```
 If you were to modify this script slightly, you could create a much larger file (1GB, 1TB, etc.) which could lead to the machine the server is being hosted on to have poor performance due, or even crash altogether, causing a denial of service.  
-  
+
 Another exploit could use the [Node OS module](https://nodejs.org/api/os.html) to expose information of the machine that the Node server is running on.  When arbitrary code can be executed on a server, any number of things can happen to compromise the confidentiality or integrity of the data on the server - or to harm the availability of that server.
 
 ## Makefile
@@ -64,3 +64,18 @@ I've included a Makefile with two targets:
 
 #### Note
 This Makefile **does not** work with Node version 0.6.12 (the version currently on the SE lab machines), I have tested it and had it work on Node version 4.6.1.
+
+## Fixed version
+getHexValueFixed.js changes the core logic to look like this
+``` javascript
+r.question('Enter a color to get its hex value (e.x. blue): ', function (statement) {
+    statement = statement.toLowerCase();
+    if (statement && colorHexes[statement]) {
+      console.log(colorHexes[statement]);
+    } else {
+      console.log('Can\'t find that color in the system, try Googling it!')
+    }
+    process.stdin.pause();
+});
+```
+So that the `colorHexes` object is still used as a reference to the colors so as to avoid writing several if/switch conditions, but the syntax `object.property` is replaced with `object["property"]`
