@@ -6,7 +6,7 @@ const r = readline.createInterface({input: process.stdin, output: process.stdout
 
 // NEVER call this function it is DANGEROUS
 // TODO: remove this dangerous function
-function secretfunction() {
+function secret() {
     console.log('How\'d you get in this function?')
 }
 

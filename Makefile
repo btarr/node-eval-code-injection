@@ -3,7 +3,7 @@ default:
 	@echo 'blue' | node getHexValue.js
 	@echo
 	@echo 'exploit the program and call a secret function'
-	@echo 'green; secretfunction()' | node getHexValue.js
+	@echo 'green; secret()' | node getHexValue.js
 
 bigfile:
 	@echo 'exploit program to create 1MB file'
