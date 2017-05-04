@@ -1,7 +1,7 @@
 # JavaScript `eval()` Code Injection Example  
 
 ## Description  
-This exploits a Node script which is vulnerable to code injection ([CWE-94](https://cwe.mitre.org/data/definitions/94.html)) done for my Engineering Secure Software class as a demo.
+This exploits a Node script which is vulnerable to code injection ([CWE-94](https://cwe.mitre.org/data/definitions/94.html)) done for my Engineering Secure Software class as a demo.  I did a quick writeup for the vulnerability [here](code-injection-writeup.pdf)
 
 ## Instructions
 I have included a script which will take a sting of a color in lowercase and output a hex value that matches that color, for example:
@@ -60,3 +60,6 @@ Another exploit could use the [Node OS module](https://nodejs.org/api/os.html) t
 I've included a Makefile with two targets:  
 * `default` will give the intended input into the program once, then exploit the program to call a "secret function"
 * `bigfile` will exploit the script create a 1MB file (like explained above) called `bigFile.txt`
+
+#### Note
+This Makefile **does not** work with Node version 0.6.12 (the version currently on the SE lab machines), I have tested it and had it work on Node version 4.6.1.
