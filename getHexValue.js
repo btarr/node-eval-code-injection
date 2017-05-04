@@ -6,7 +6,7 @@ const r = readline.createInterface({input: process.stdin, output: process.stdout
 
 // NEVER call this function it is DANGEROUS
 // TODO: remove this dangerous function
-function secretFunction() {
+function secretfunction() {
     console.log('How\'d you get in this function?')
 }
 
@@ -21,10 +21,10 @@ const colorHexes = {
     orange: '#FFA500'
 };
 
-r.question('Enter a color to get its hex value: ', (statement) => {
+r.question('Enter a color in lowercase to get its hex value (e.x. blue): ', (statement) => {
     // parse the variables from the input statement
 
     // someone that doesn't know how to access an object property using a string value (e.g. colorHexes['blue']) might resort to this
-    console.log(eval('colorHexes.' + statement.toLowerCase()));
+    console.log(eval('colorHexes.' + statement));
     r.close();
 });
