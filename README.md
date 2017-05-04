@@ -54,6 +54,7 @@ Enter a color in lowercase to get its hex value (e.x. blue):
 false
 ```
 If you were to modify this script slightly, you could create a much larger file (1GB, 1TB, etc.) which could lead to the machine the server is being hosted on to have poor performance due, or even crash altogether, causing a denial of service.  
+  
 Another exploit could use the [Node OS module](https://nodejs.org/api/os.html) to expose information of the machine that the Node server is running on.  When arbitrary code can be executed on a server, any number of things can happen to compromise the confidentiality or integrity of the data on the server - or to harm the availability of that server.
 
 ## Makefile
