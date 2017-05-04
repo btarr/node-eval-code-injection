@@ -1,10 +1,10 @@
-'use strict';
-
 // user readline to get user input
 var readline = require('readline');
 
+process.stdin.resume();
+
 // read from stdin, write to stdout
-var r = readline.createInterface({ input: process.stdin, output: process.stdout });
+var r = readline.createInterface(process.stdin, process.stdout, null);
 
 // NEVER call this function it is DANGEROUS
 // TODO: remove this dangerous function
@@ -28,5 +28,5 @@ r.question('Enter a color in lowercase to get its hex value (e.x. blue): ', func
 
     // someone that doesn't know how to access an object property using a string value (e.g. colorHexes['blue']) might resort to this
     console.log(eval('colorHexes.' + statement));
-    r.close();
+    process.stdin.pause();
 });
