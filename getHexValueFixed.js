@@ -15,7 +15,7 @@ var colorHexes = {
     orange: '#FFA500'
 };
 
-r.question('Enter a color in lowercase to get its hex value (e.x. blue): ', function (statement) {
+r.question('Enter a color to get its hex value (e.x. blue): ', function (statement) {
     statement = statement.toLowerCase();
     if (statement && colorHexes[statement]) {
       console.log(colorHexes[statement]);
